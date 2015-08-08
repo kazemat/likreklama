@@ -1,0 +1,6 @@
+<ul class="sidebar-nav">
+    <li class="sidebar-brand">{{ request.session.settings.sidebar_title }}</li>
+    {% for item in request.session.menu_items %}
+        <li{% if act_index == forloop.counter0 %} class="active"{% endif %}><a href="#">{{ item.name }}</a></li>
+    {% endfor %}
+</ul>

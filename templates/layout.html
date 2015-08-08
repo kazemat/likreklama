@@ -1,0 +1,72 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="" name="description">
+    <meta content="plipchak" name="author">
+    <title>Лик-Реклама</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/simpleSidebar/css/simple-sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/gallery-master/css/blueimp-gallery.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-image-gallery/css/bootstrap-image-gallery.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+{#<img id="header-image" class="hidden-xs" src="{% static 'images/top2.jpg' %}">#}
+
+<div class="navbar-wrapper">
+    <div id="main-menu" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Лик-Реклама</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li{% if active_page == 'main' %} class="active"{% endif %}><a href="{% url 'index' %}">Главная</a></li>
+                    <li{% if active_page == 'about' %} class="active"{% endif %}><a href="{% url 'about-company' %}">О нас</a></li>
+                    <li{% if active_page == 'contacts' %} class="active"{% endif %}><a href="#">Контакты</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right fnt16">
+                    <li><a href="#">Телефон: {{ request.session.settings.phone }}</a></li>
+                    <li><a href="#">E-mail: {{ request.session.settings.email }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        {% with act_index=0 %}
+            {% include "sidebar.html" %}
+        {% endwith %}
+    </div>
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <h1 class="page-header">{{ title_lg }}
+                <small>{{ title_sm }}</small>
+            </h1>
+            {% block content %}{% endblock %}
+        {{ session }}
+        </div>
+
+    </div>
+</div>
+<div class=""></div>
+</body>
+<script type="application/javascript" src="{% static 'plugins/jquery/jQuery2.1.4.js' %}"></script>
+<script type="application/javascript" src="{% static 'plugins/jquery/jquery1.11.1.js' %}"></script>
+<script type="application/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+<script type="application/javascript" src="{% static 'plugins/gallery-master/js/blueimp-gallery.js' %}"></script>
+<script type="application/javascript" src="{% static 'plugins/gallery-master/js/jquery.blueimp-gallery.min.js' %}"></script>
+<script type="application/javascript" src="{% static 'plugins/bootstrap-image-gallery/js/bootstrap-image-gallery.min.js' %}"></script>
+</html>
