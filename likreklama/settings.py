@@ -43,6 +43,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lik',
+    'cms',
+    'sorl.thumbnail',
+    'redactor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -54,8 +57,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'lik.utils.GetMenuItems',
-    'lik.utils.GetSettings',
+    'lik.core.middleware.ActiveMenuItem',
 )
 
 ROOT_URLCONF = 'likreklama.urls'
@@ -75,6 +77,8 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'lik.core.context_processors.get_menu_items',
+                'cms.core.context_processors.get_settings',
             ],
         },
     },
@@ -100,9 +104,8 @@ DATABASES = {
     }
 }
 
-ASSETS_MODULES = [
-    'lik.assets'
-]
+REDACTOR_OPTIONS = {'lang': 'ru', 'codemirror': False}
+REDACTOR_UPLOAD = 'media/'
 
 
 # Internationalization
@@ -134,6 +137,8 @@ MEDIA_ROOT = os.path.join(
     BASE_DIR,
     'media_root'
 )
+
+ADMIN_MEDIA_PREFIX = ''
 
 
 ADMIN_TOOLS_MENU = 'menu.CustomMenu'

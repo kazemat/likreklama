@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load thumbnail %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'plugins/gallery-master/css/blueimp-gallery.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/slick/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/slick/slick-theme.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4 col-xs-12">
+            <h4>{{ product.small_description }}</h4>
+            <table class="table">
+                {% for row in product.items.all %}
+                    <tr>
+                        <td><strong>{{ row.name }}</strong></td>
+                        <td>{{ row.material.name }}</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <div class="row">
+                <p>{{ product.description }}</p>
+            </div>
+        </div>
+        <div class="col-md-8 col-xs-12">
+            <div id="links">
+                <p class="text-muted pull-right">Нажмите на картинку для увеличения изображения</p>
+                <a href="{{ product.photo.url }}" title="{{ product.name }}" data-gallery>
+                    <img src="{{ product.photo.url }}" alt="{{ product.name }}">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="blueimp-gallery" class="blueimp-gallery">
+        <!-- The container for the modal slides -->
+        <div class="slides"></div>
+        <!-- Controls for the borderless lightbox -->
+        <h4 class="title"></h4>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">&times;</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+        <!-- The modal dialog, which will be used to wrap the lightbox content -->
+        <div class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body next"></div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <h4>Другие {{ title_lg|lower }}:</h4>
+        <div id="slick">
+            {% for one in all %}
+                <div>
+                    <a href="{% url 'lik:product-prod' cat_id one.id %}" title="{{ one.name }}">
+                        {% thumbnail one.photo "150x150" crop="top" as im %}
+                            <img src="{{ im.url }}" title="{{ one.name }}" width="{{ im.width }}"
+                                 height="{{ im.height }}">
+                        {% endthumbnail %}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script type="application/javascript"
+            src="{% static 'plugins/gallery-master/js/blueimp-gallery.min.js' %}"></script>
+    <script type="application/javascript" src="{% static 'plugins/slick/slick.min.js' %}"></script>
+    <script type="application/javascript" src="{% static 'js/slides.js' %}"></script>
+{% endblock %}

@@ -104,12 +104,22 @@
 
 @media (max-width: 768px) {
     #sidebar-wrapper {
-        width: 180px;
+        width: 160px;
     }
     #wrapper {
-    padding-left: 180px;
+    padding-left: 160px;
     }
     .sidebar-nav {
-        width: 180px;
+        width: 160px;
+    }
+
+    .sidebar-nav li {
+        text-align: center;
+    }
+
+    .sidebar-brand {
+        font-size: 12px;
+        height: 40px;
+        line-height: 40px;
     }
 }

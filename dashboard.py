@@ -44,20 +44,13 @@ class CustomIndexDashboard(Dashboard):
             layout='inline',
             draggable=True,
             deletable=False,
-            exclude=('django.contrib.*',),
+            exclude=('django.contrib.*', 'admin_tools.*',),
         ))
 
-        # append an app list module for "Administration"
-        # self.children.append(modules.AppList(
-        #     _('Administration'),
-        #     models=('django.contrib.*',),
+        # self.children.append(modules.ModelList(
+        #     _('Settings'),
+        #     models=['settings.models.Settings']
         # ))
-
-        # append a recent actions module
-        self.children.append(modules.RecentActions(_('Recent Actions'), 20,
-            layout='inline',
-            draggable=True,
-            deletable=False,))
 
 
 class CustomAppIndexDashboard(AppIndexDashboard):
