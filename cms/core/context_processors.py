@@ -1,4 +1,4 @@
-from cms.models import Settings
+from cms.models import Settings, Counter
 
 
 def get_settings(request):
@@ -11,3 +11,8 @@ def get_settings(request):
         else:
             settings[i] = ''
     return dict(settings=settings)
+
+
+def get_counters(request):
+    counters = Counter.objects.filter(visible=True)
+    return dict(counters=counters)

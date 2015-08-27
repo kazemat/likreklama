@@ -31,9 +31,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li{% if request.session.active == 'main' %} class="active"{% endif %}><a href="{% url 'lik:index' %}">Главная</a></li>
-                    <li{% if request.session.active == 'about' %} class="active"{% endif %}><a href="{% url 'lik:about-company' %}">О нас</a></li>
-                    <li{% if request.session.active == 'contacts' %} class="active"{% endif %}><a href="{% url 'lik:company-contacts' %}">Контакты</a></li>
+                    <li{% if request.session.active == 'main' %} class="active"{% endif %}><a
+                            href="{% url 'lik:index' %}">Главная</a></li>
+                    <li{% if request.session.active == 'about' %} class="active"{% endif %}><a
+                            href="{% url 'lik:about-company' %}">О нас</a></li>
+                    <li{% if request.session.active == 'contacts' %} class="active"{% endif %}><a
+                            href="{% url 'lik:company-contacts' %}">Контакты</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right fnt16">
                     <li><a href="#">Телефон: {{ settings.phone }}</a></li>
@@ -48,7 +51,8 @@
         <ul class="sidebar-nav">
             <li class="sidebar-brand">{{ settings.sidebar_title }}</li>
             {% for item in menu_items %}
-                <li{% if request.session.active == item.name %} class="active"{% endif %}><a href="{% url 'lik:product-cat' item.id %}">{{ item.name }}</a></li>
+                <li{% if request.session.active == item.name %} class="active"{% endif %}><a
+                        href="{% url 'lik:product-cat' item.id %}">{{ item.name }}</a></li>
             {% endfor %}
         </ul>
     </div>
@@ -62,7 +66,15 @@
 
     </div>
 </div>
-<div class=""></div>
+<footer class="bottom">
+            <div class="container">
+                <p>Переплетная мастерская Лик-Реклама 1996-2015. Все права защищены</p>
+                {% for counter in counters %}
+                    {{ counter.script|safe }}
+                {% endfor %}
+            </div>
+        </footer>
+
 <script type="application/javascript" src="{% static 'plugins/jquery/jQuery2.1.4.js' %}"></script>
 <script type="application/javascript" src="{% static 'plugins/jquery/jquery1.11.1.js' %}"></script>
 <script type="application/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>

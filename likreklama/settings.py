@@ -79,6 +79,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'lik.core.context_processors.get_menu_items',
                 'cms.core.context_processors.get_settings',
+                'cms.core.context_processors.get_counters',
             ],
         },
     },

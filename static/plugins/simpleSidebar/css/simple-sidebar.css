@@ -35,6 +35,9 @@
     /*-o-transition: all 0.5s ease;*/
     /*transition: all 0.5s ease;*/
 }
+footer.bottom {
+    padding-left: 250px;
+}
 
 
 #page-content-wrapper {
@@ -108,6 +111,9 @@
     }
     #wrapper {
     padding-left: 160px;
+    }
+    footer.bottom {
+        padding-left: 160px;
     }
     .sidebar-nav {
         width: 160px;

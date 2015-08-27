@@ -80,3 +80,15 @@ class Contacts(models.Model):
         verbose_name = 'контакты'
         verbose_name_plural = 'контакты'
 
+
+class Counter(models.Model):
+    name = models.CharField(max_length=60, verbose_name='Название')
+    script = models.TextField(max_length=2048, verbose_name='Код счетчика')
+    visible = models.NullBooleanField(default=False, verbose_name='Видимость', null=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'счётчик'
+        verbose_name_plural = 'счётчики'

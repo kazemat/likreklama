@@ -38,14 +38,30 @@ class CustomIndexDashboard(Dashboard):
             ]
         ))
 
-        # append an app list module for "Applications"
-        self.children.append(modules.AppList(
-            _('Applications'),
-            layout='inline',
-            draggable=True,
-            deletable=False,
-            exclude=('django.contrib.*', 'admin_tools.*',),
-        ))
+        self.children.append(
+                modules.ModelList(
+                    title='Продукты',
+                    models=[
+                        'lik.models.Category',
+                        'lik.models.Product'
+                        ]
+                )
+        )
+        self.children.append(
+            modules.ModelList(
+                 title='Настройки сайта',
+                 models=[
+                    'cms.models.*'
+                 ]
+            )
+        )
+                # modules.ModelList(
+                #     title='Настройки сайта',
+                #     models=[
+                #         'cms.models.*'
+                #     ]
+                # )
+
 
         # self.children.append(modules.ModelList(
         #     _('Settings'),

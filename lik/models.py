@@ -8,6 +8,7 @@ class Category(models.Model):
     name = models.CharField(max_length=60, verbose_name='Название категории')
     description = models.TextField(max_length=500, null=True, verbose_name='Полное описание')
     visible = models.BooleanField(default=True, verbose_name='Видимый элемент')
+    order = models.IntegerField(verbose_name='Порядковый номер', null=True)
 
     def __str__(self):
         return self.name.capitalize()
@@ -44,13 +45,14 @@ class Product(models.Model):
     name = models.CharField(max_length=60, verbose_name='Название продукта')
     small_description = models.TextField(max_length=150, null=True, verbose_name='Краткое описание')
     description = models.TextField(max_length=255, null=True, verbose_name='Полное описание продукта')
-    date_add = models.DateTimeField(default=datetime.now(), null=True, editable=False, verbose_name='Дата создания')
+    date_add = models.DateTimeField(null=True, editable=False, verbose_name='Дата создания')
     date_change = models.DateTimeField(auto_now=True, null=True, editable=False, verbose_name='Дата изменения')
     material = models.ForeignKey(Material, verbose_name='Основной материал')
     items = models.ManyToManyField(Item, verbose_name='Компоненты')
     photo = models.ImageField(verbose_name='Фотография', null=True)
     category = models.ManyToManyField(Category, verbose_name='Категория', null=True)
     thumb = models.ImageField(null=True, editable=False)
+    test = models.CharField(max_length=12, null=True)
 
     def __str__(self):
         return self.name.capitalize()
