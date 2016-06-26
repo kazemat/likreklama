@@ -1,5 +1,7 @@
+#!/virtualenv/lik/bin/python
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
-from .models import Category, Product
+from lik.models import Category, Product
 from cms.models import TextBlock, Contacts
 from django.http import Http404
 
@@ -7,7 +9,7 @@ from django.http import Http404
 def index(request, param=None):
     text = TextBlock.objects.filter(name='main').first()
     return render(request, 'layout.html', dict(
-        title_lg='Главная',
+        title_lg=u'Главная',
         text=text
     ))
 
@@ -15,7 +17,7 @@ def index(request, param=None):
 def about(request):
     text = TextBlock.objects.filter(name='about').first()
     return render(request, 'pages/simple.html', dict(
-        title_lg='О нас',
+        title_lg=u'О нас',
         text=text
     ))
 
@@ -24,7 +26,7 @@ def contacts(request):
     text = Contacts.objects.first()
     print(text)
     return render(request, 'pages/contacts.html', dict(
-        title_lg='Контакты',
+        title_lg=u'Контакты',
         text=text
     ))
 

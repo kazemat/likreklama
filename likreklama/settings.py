@@ -1,3 +1,5 @@
+#!/virtualenv/lik/bin/python
+# -*- coding: utf-8 -*-
 """
 Django settings for likreklama project.
 
@@ -139,7 +141,7 @@ MEDIA_ROOT = os.path.join(
     'media_root'
 )
 
-ADMIN_MEDIA_PREFIX = ''
+# ADMIN_MEDIA_PREFIX = ''
 
 
 ADMIN_TOOLS_MENU = 'menu.CustomMenu'

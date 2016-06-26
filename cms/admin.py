@@ -1,3 +1,5 @@
+#!/virtualenv/lik/bin/python
+# -*- coding: utf-8 -*-
 from django.contrib import admin
 from cms.models import Settings, TextBlock, Email, Phone, Contacts, Counter
 from .models import models

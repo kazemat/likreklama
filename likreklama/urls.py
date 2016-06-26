@@ -1,3 +1,5 @@
+#!/virtualenv/lik/bin/python
+# -*- coding: utf-8 -*-
 from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls import include, url

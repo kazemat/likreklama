@@ -1,10 +1,27 @@
 
 /* Main color */
 
+html {
+    height: 100%;
+}
+
 
 body {
     background: #404040;
     color: white;
+    height: 100%;
+}
+
+#sidebar-wrapper {
+    height: 100%;
+}
+
+#page-content-wrapper {
+    height: 90%;
+}
+
+footer {
+    height: 10%;
 }
 
 #header-image {

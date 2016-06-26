@@ -65,15 +65,16 @@
         </div>
 
     </div>
+    <footer class="bottom">
+        <div class="container">
+            <p>Переплетная мастерская "Лик-Реклама" 1996-2015. Все права защищены</p>
+            {% for counter in counters %}
+                {{ counter.script|safe }}
+            {% endfor %}
+        </div>
+    </footer>
 </div>
-<footer class="bottom">
-            <div class="container">
-                <p>Переплетная мастерская Лик-Реклама 1996-2015. Все права защищены</p>
-                {% for counter in counters %}
-                    {{ counter.script|safe }}
-                {% endfor %}
-            </div>
-        </footer>
+
 
 <script type="application/javascript" src="{% static 'plugins/jquery/jQuery2.1.4.js' %}"></script>
 <script type="application/javascript" src="{% static 'plugins/jquery/jquery1.11.1.js' %}"></script>

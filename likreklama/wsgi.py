@@ -1,3 +1,5 @@
+#!/virtualenv/lik/bin/python
+# -*- coding: utf-8 -*-
 """
 WSGI config for likreklama project.
 
